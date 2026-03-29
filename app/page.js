@@ -1,65 +1,111 @@
-import Image from "next/image";
+import Link from "next/link";
+import ProductCard from "@/components/ProductCard";
+import Reveal from "@/components/Reveal";
+import { products } from "@/data/products";
+
+const testimonials = [
+  {
+    name: "Anita Sharma",
+    review: "Beautiful flowers and fast delivery. Highly recommended.",
+  },
+  {
+    name: "Riya Kapoor",
+    review: "The bouquet looked exactly like the photos and arrived right on time.",
+  },
+  {
+    name: "Meera Patel",
+    review: "Elegant arrangements and very helpful team for custom requests.",
+  },
+];
 
 export default function Home() {
+  const featuredProducts = products.slice(0, 3);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Reveal as="section" className="bg-white py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="space-y-6 text-center">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-pink-500">
+              Daily Flower Delivery
+            </p>
+            <h1 className="font-heading mx-auto max-w-3xl text-5xl font-bold leading-tight text-gray-900 sm:text-6xl">
+              Fresh Flowers for Every Occasion
+            </h1>
+            <p className="mx-auto max-w-2xl text-base leading-8 text-gray-600">
+              Beautiful floral arrangements delivered daily.
+            </p>
+            <div className="flex justify-center">
+              <Link
+                href="/products"
+                className="rounded-lg bg-pink-500 px-5 py-2 font-medium text-white transition duration-300 ease-out hover:-translate-y-1 hover:bg-pink-600"
+              >
+                Shop Now
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </Reveal>
+
+      <Reveal as="section" id="featured" className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal className="mb-10 space-y-3 text-center">
+            <h2 className="font-heading text-4xl font-semibold leading-tight text-gray-900">
+              Featured Products
+            </h2>
+            <p className="mx-auto max-w-2xl text-base leading-8 text-gray-600">
+              Thoughtfully arranged bouquets and floral gifts designed to feel polished, warm, and easy to send.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProducts.map((product, index) => (
+              <Reveal key={product.id} delay={index * 100}>
+                <ProductCard
+                  product={product}
+                  href={`/products/${product.id}`}
+                />
+              </Reveal>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </Reveal>
+
+      <Reveal as="section" id="about" className="bg-white py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="mx-auto max-w-3xl space-y-4 text-center">
+            <h2 className="font-heading text-4xl font-semibold leading-tight text-gray-900">
+              About
+            </h2>
+            <p className="text-base leading-8 text-gray-600">
+              Petal & Stem is a neighborhood flower shop creating fresh, elegant arrangements for birthdays, anniversaries, and everyday gifting.
+            </p>
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal as="section" className="bg-gray-50 py-16">
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal className="mb-10 text-center">
+            <h2 className="font-heading text-4xl font-semibold leading-tight text-gray-900">
+              What Our Customers Say
+            </h2>
+          </Reveal>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <Reveal key={testimonial.name} delay={index * 100}>
+                <article className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition duration-300 ease-out hover:-translate-y-1 hover:shadow-md">
+                  <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
+                  <p className="mt-3 text-base leading-8 text-gray-600">
+                    {testimonial.review}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+    </>
   );
 }
