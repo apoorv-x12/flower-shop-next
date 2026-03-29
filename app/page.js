@@ -23,16 +23,21 @@ export default function Home() {
 
   return (
     <>
-      <Reveal as="section" className="bg-white py-16">
-        <div className="mx-auto max-w-6xl px-6">
+      <Reveal as="section" className="relative overflow-hidden py-40">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/pink-rose.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="relative mx-auto max-w-6xl px-6">
           <div className="space-y-6 text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-pink-500">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-pink-300">
               Daily Flower Delivery
             </p>
-            <h1 className="font-heading mx-auto max-w-3xl text-5xl font-bold leading-tight text-gray-900 sm:text-6xl">
+            <h1 className="font-heading mx-auto max-w-3xl text-5xl font-bold leading-tight text-white sm:text-6xl">
               Fresh Flowers for Every Occasion
             </h1>
-            <p className="mx-auto max-w-2xl text-base leading-8 text-gray-600">
+            <p className="mx-auto max-w-2xl text-base leading-8 text-gray-200">
               Beautiful floral arrangements delivered daily.
             </p>
             <div className="flex justify-center">
