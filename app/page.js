@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
@@ -78,13 +79,34 @@ export default function Home() {
 
       <Reveal as="section" id="about" className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-3xl space-y-4 text-center">
-            <h2 className="font-heading text-4xl font-semibold leading-tight text-gray-900">
-              About
-            </h2>
-            <p className="text-base leading-8 text-gray-600">
-              Petal & Stem is a neighborhood flower shop creating fresh, elegant arrangements for birthdays, anniversaries, and everyday gifting.
-            </p>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+            <Reveal delay={100} className="space-y-6">
+              <p className="text-sm font-medium uppercase tracking-[0.2em] text-pink-500">
+                Our Story
+              </p>
+              <h2 className="font-heading text-4xl font-semibold leading-tight text-gray-900">
+                About Petal &amp; Stem
+              </h2>
+              <p className="text-base leading-8 text-gray-600">
+                Petal &amp; Stem is a neighborhood flower shop creating fresh, elegant arrangements for birthdays, anniversaries, and everyday gifting.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {["Fresh Daily", "Custom Arrangements", "Same-Day Delivery"].map((tag) => (
+                  <span key={tag} className="rounded-full border border-pink-200 bg-pink-50 px-4 py-1.5 text-sm font-medium text-pink-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={200}>
+              <Image
+                src="/bouquet-pink-rose.jpg"
+                alt="Freshly wrapped pink rose bouquet from Petal and Stem"
+                width={640}
+                height={640}
+                className="h-80 w-full rounded-2xl object-cover shadow-lg"
+              />
+            </Reveal>
           </div>
         </div>
       </Reveal>
