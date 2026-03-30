@@ -22,10 +22,10 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-white font-sans text-gray-900">
+      <body className="min-h-full bg-gradient-to-b from-white via-[#faf8f6] to-white font-sans text-gray-900">
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>

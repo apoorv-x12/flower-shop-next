@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
+  --background: #fafaf8;
+  --foreground: #1a1a18;
+  --primary: #c4617e;
+  --primary-light: #e8bcd1;
+  --primary-dark: #9b4a62;
+  --accent: #8b6f47;
+  --accent-light: #d4c4b0;
+  --gray-50: #faf8f6;
+  --gray-100: #f5f3f0;
+  --gray-200: #e8e4de;
+  --gray-300: #dbd4ca;
+  --gray-400: #bfb5a8;
+  --gray-500: #8b8680;
+  --gray-600: #6b6560;
+  --gray-700: #4d4944;
+  --gray-800: #2d2925;
+  --gray-900: #1a1a18;
 }
 
 @theme inline {
@@ -15,6 +30,7 @@
 
 html {
   background: var(--background);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +38,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -31,4 +49,23 @@ h4,
 h5,
 h6 {
   font-feature-settings: "liga" 1, "kern" 1;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-all duration-300 ease-out;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle glow effect */
+.glow-effect {
+  box-shadow: 0 0 30px rgba(196, 97, 126, 0.1);
 }
