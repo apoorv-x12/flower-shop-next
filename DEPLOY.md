@@ -44,7 +44,7 @@ The workflow (`.github/workflows/deploy.yml`):
 
 2. **Build Process**:
    - Checkouts code
-   - Sets up Node.js 18
+   - Sets up Node.js 20.11.1
    - Installs dependencies with npm
    - Builds the static site
    - Uploads artifacts
