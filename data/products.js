@@ -1,3 +1,8 @@
+const publicBasePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ||
+  process.env.NEXT_BASE_PATH ||
+  (process.env.NODE_ENV === "production" ? "/flower-shop-next" : "");
+
 export const products = [
   {
     id: "blush-garden-bouquet",
@@ -5,7 +10,7 @@ export const products = [
     description:
       "Soft pink peonies, roses, and ranunculus arranged for birthdays and thank-you gifts.",
     price: "$48",
-    image: "/pink-rose.jpg",
+    image: `${publicBasePath}/pink-rose.jpg`,
     alt: "Pink bouquet wrapped in cream paper with layered flowers",
   },
   {
@@ -14,7 +19,7 @@ export const products = [
     description:
       "A fresh mix of tulips, wildflowers, and eucalyptus for bright everyday delivery.",
     price: "$56",
-    image: "/sunflower-group.jpg",
+    image: `${publicBasePath}/sunflower-group.jpg`,
     alt: "Glass vase with pastel flowers and green stems",
   },
   {
@@ -23,7 +28,7 @@ export const products = [
     description:
       "Elegant roses and lisianthus styled in a keepsake box for anniversaries and events.",
     price: "$72",
-    image: "/bouquet-pink-rose.jpg",
+    image: `${publicBasePath}/bouquet-pink-rose.jpg`,
     alt: "Pink floral arrangement displayed in a decorative gift box",
   },
   {
@@ -32,7 +37,7 @@ export const products = [
     description:
       "Layered seasonal blooms in a low vase designed for dinners, showers, and hosting.",
     price: "$64",
-    image: "/sunflower-group.jpg",
+    image: `${publicBasePath}/sunflower-group.jpg`,
     alt: "Low floral centerpiece with mixed pastel flowers and greenery",
   },
   {
@@ -41,7 +46,7 @@ export const products = [
     description:
       "A hand-tied dozen rose bundle with soft foliage for anniversaries and romantic gifting.",
     price: "$52",
-    image: "/rose.jpg",
+    image: `${publicBasePath}/rose.jpg`,
     alt: "Rose bundle with pink flowers tied in decorative wrap",
   },
   {
@@ -50,7 +55,7 @@ export const products = [
     description:
       "A premium floral box with bold pink stems and textured accents for milestone moments.",
     price: "$78",
-    image: "/bouqet-pink.jpg",
+    image: `${publicBasePath}/bouqet-pink.jpg`,
     alt: "Decorative flower box with pink blossoms arranged tightly together",
   },
 ];

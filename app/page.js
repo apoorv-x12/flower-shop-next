@@ -21,13 +21,17 @@ const testimonials = [
 
 export default function Home() {
   const featuredProducts = products.slice(0, 3);
+  const publicBasePath =
+    process.env.NEXT_PUBLIC_BASE_PATH ||
+    process.env.NEXT_BASE_PATH ||
+    (process.env.NODE_ENV === "production" ? "/flower-shop-next" : "");
 
   return (
     <>
       <Reveal as="section" className="relative overflow-hidden py-44 bg-gradient-to-b from-white via-[#f5f3f0] to-white">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/pink-rose.jpg')" }}
+          style={{ backgroundImage: `url('${publicBasePath}/pink-rose.jpg')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/60" />
         <div className="relative mx-auto max-w-6xl px-6">
@@ -120,7 +124,7 @@ export default function Home() {
             <Reveal delay={200}>
               <div className="relative">
                 <Image
-                  src="/bouquet-pink-rose.jpg"
+                  src={`${publicBasePath}/bouquet-pink-rose.jpg`}
                   alt="Freshly wrapped pink rose bouquet from Petal and Stem"
                   width={640}
                   height={640}

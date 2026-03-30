@@ -1,5 +1,9 @@
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const siteBasePath =
+    process.env.NEXT_PUBLIC_BASE_PATH ||
+    process.env.NEXT_BASE_PATH ||
+    (process.env.NODE_ENV === "production" ? "/flower-shop-next" : "");
 
   return (
     <footer className="border-t border-gray-200 bg-gradient-to-br from-gray-50 via-white to-gray-50">
@@ -31,7 +35,7 @@ export default function Footer() {
             <h4 className="font-heading font-semibold text-gray-900">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/products" className="text-gray-600 hover:text-[#c4617e] transition-colors">
+                <a href={`${siteBasePath}/products/`} className="text-gray-600 hover:text-[#c4617e] transition-colors">
                   Shop Products
                 </a>
               </li>
@@ -41,7 +45,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-gray-600 hover:text-[#c4617e] transition-colors">
+                <a href={`${siteBasePath}/contact/`} className="text-gray-600 hover:text-[#c4617e] transition-colors">
                   Contact Us
                 </a>
               </li>
