@@ -1,36 +1,48 @@
-import { Geist_Mono, Inter } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import FloatingBackground from "@/components/FloatingBackground";
+import PageLoader from "@/components/PageLoader";
+import { CartProvider } from "@/components/CartContext";
+import CartSidebar from "@/components/CartSidebar";
 
-const inter = Inter({
-  variable: "--font-inter",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata = {
-  title: "Petal & Stem",
-  description: "A modern flower shop homepage with featured arrangements and elegant gifting.",
+  title: "Bloom Craft — Handcrafted Flower Delivery",
+  description: "Handcrafted flowers and chenille arrangements for every occasion. Pan India delivery, custom orders.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      className={`${dmSans.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full bg-gradient-to-b from-white via-[#faf8f6] to-white font-sans text-gray-900">
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+      <body className="min-h-full font-sans" style={{ background: "var(--cream)", color: "var(--dark-text)" }}>
+        <CartProvider>
+          <PageLoader />
+          <FloatingBackground />
+          <div className="flex min-h-screen flex-col relative z-10">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+          <CartSidebar />
+        </CartProvider>
       </body>
     </html>
   );

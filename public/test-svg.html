@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+function PurplePlantSVG({ size = 130 }) {
+  const potW = size * 0.52, potH = size * 0.28, potX = (size - potW) / 2;
+  const potY = size * 0.70;
+  const stems = [
+    { bx: size * 0.34, angle: -50 },
+    { bx: size * 0.40, angle: -28 },
+    { bx: size * 0.47, angle:  -8 },
+    { bx: size * 0.54, angle:  12 },
+    { bx: size * 0.60, angle:  32 },
+    { bx: size * 0.66, angle:  52 },
+  ];
+  const stemLen = size * 0.50;
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {stems.map((s, i) => {
+        const rad = (s.angle * Math.PI) / 180;
+        const tipX = s.bx + Math.sin(rad) * stemLen;
+        const tipY = potY - Math.cos(rad) * stemLen;
+        const spikeH = size * 0.22;
+        const spikeCount = 6;
+        return (
+          <g key={i}>
+            <line x1={s.bx} y1={potY} x2={tipX} y2={tipY} stroke="#2d5a1b" strokeWidth={size * 0.028} strokeLinecap="round"/>
+            {Array.from({ length: spikeCount }).map((_, j) => {
+              const t = j / spikeCount;
+              const sx = tipX - Math.sin(rad) * spikeH * t;
+              const sy = tipY + Math.cos(rad) * spikeH * t;
+              return (
+                <ellipse key={j} cx={sx} cy={sy} rx={size * 0.025 + t * size * 0.01} ry={size * 0.05} fill={j < 2 ? "#d49ae0" : "#b86fc7"} opacity={0.9 - t * 0.15} transform={`rotate(${s.angle} ${sx} ${sy})`} />
+              );
+            })}
+            <ellipse cx={tipX} cy={tipY} rx={size * 0.022} ry={size * 0.035} fill="#e0b4f0" transform={`rotate(${s.angle} ${tipX} ${tipY})`}/>
+          </g>
+        );
+      })}
+      <rect x={potX} y={potY} width={potW} height={potH} rx={size * 0.04} fill="#8b1a1a"/>
+      <ellipse cx={size / 2} cy={potY + 2} rx={potW * 0.45} ry={size * 0.035} fill="#2d1a0a" opacity="0.6"/>
+    </svg>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<PurplePlantSVG size={400} />);
+</script>
+</body>
+</html>

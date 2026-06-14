@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import ContactPageClient from "@/components/ContactPageClient";
 
 export const metadata = {
-  title: "Contact Us | Petal & Stem",
+  title: "Contact Us | Bloom Craft",
   description:
     "Contact the shop for orders, delivery questions, and custom floral requests.",
 };

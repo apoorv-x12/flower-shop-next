@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function Reveal({
   as: Tag = "div",
   className = "",
+  style = {},
   delay = 0,
   children,
 }) {
@@ -44,7 +45,7 @@ export default function Reveal({
   return (
     <Tag
       ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ ...style, transitionDelay: `${delay}ms` }}
       className={`${baseClasses} ${isVisible ? shownClasses : hiddenClasses} ${className}`.trim()}
     >
       {children}
