@@ -9,6 +9,7 @@ export function CartProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Load from localStorage on mount (optional but good practice)
+  // Demonstrating a new git commit! 🚀
   useEffect(() => {
     const saved = localStorage.getItem("bloom-cart");
     if (saved) {
