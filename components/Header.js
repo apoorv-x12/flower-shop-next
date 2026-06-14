@@ -33,8 +33,31 @@ export function LogoFlower() {
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const { cartCount, setIsCartOpen } = useCart();
+  const { cartCount, setIsCartOpen, expiresAt } = useCart();
   const [mounted, setMounted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState("");
+
+  useEffect(() => {
+    if (!expiresAt || cartCount === 0) {
+      setTimeLeft("");
+      return;
+    }
+
+    const updateTimer = () => {
+      const diff = expiresAt - Date.now();
+      if (diff <= 0) {
+        setTimeLeft("00:00");
+      } else {
+        const mins = Math.floor((diff / 1000 / 60) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+        setTimeLeft(`${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`);
+      }
+    };
+
+    updateTimer(); // Initial update
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, [expiresAt, cartCount]);
 
   useEffect(() => {
     setMounted(true);
@@ -94,38 +117,46 @@ export default function Header() {
           {/* CTA, Cart + hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             
-            {/* Cart Icon */}
-            <button 
-              onClick={() => setIsCartOpen(true)}
-              style={{
-                position: "relative",
-                background: "var(--cream-2)",
-                border: "1px solid var(--border-light)",
-                borderRadius: "50%",
-                width: "42px", height: "42px",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: "pointer",
-                transition: "all 0.2s"
-              }}
-              className="hover:scale-105"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose-dark)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-              </svg>
-              {mounted && cartCount > 0 && (
-                <span style={{
-                  position: "absolute", top: "-4px", right: "-4px",
-                  background: "var(--rose)", color: "white",
-                  fontSize: "10px", fontWeight: "bold",
-                  width: "18px", height: "18px", borderRadius: "50%",
+            {/* Cart Icon & Timer Wrapper */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
+              <button 
+                onClick={() => setIsCartOpen(true)}
+                style={{
+                  position: "relative",
+                  background: "var(--cream-2)",
+                  border: "1px solid var(--border-light)",
+                  borderRadius: "50%",
+                  width: "42px", height: "42px",
                   display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-                  {cartCount}
-                </span>
+                  cursor: "pointer",
+                  transition: "all 0.2s"
+                }}
+                className="hover:scale-105"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose-dark)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                {mounted && cartCount > 0 && (
+                  <span style={{
+                    position: "absolute", top: "-4px", right: "-4px",
+                    background: "var(--rose)", color: "white",
+                    fontSize: "10px", fontWeight: "bold",
+                    width: "18px", height: "18px", borderRadius: "50%",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+              
+              {mounted && timeLeft && (
+                <div style={{ fontSize: "10px", fontWeight: 700, color: "var(--rose)", fontFamily: "'DM Sans', sans-serif" }}>
+                  {timeLeft}
+                </div>
               )}
-            </button>
+            </div>
 
             <Link href="/products" style={{
               alignItems: "center",

@@ -7,6 +7,7 @@ const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [expiresAt, setExpiresAt] = useState(null);
 
   const CART_TTL = 1 * 60 * 60 * 1000; // 1 hour in ms
 
@@ -30,10 +31,16 @@ export function CartProvider({ children }) {
 
   // Save to localStorage with timestamp whenever cart changes
   useEffect(() => {
+    const now = Date.now();
     localStorage.setItem(
       "bloom-cart",
-      JSON.stringify({ items: cartItems, savedAt: Date.now() })
+      JSON.stringify({ items: cartItems, savedAt: now })
     );
+    if (cartItems.length > 0) {
+      setExpiresAt(now + CART_TTL);
+    } else {
+      setExpiresAt(null);
+    }
   }, [cartItems]);
 
   const addToCart = (product, quantity = 1) => {
@@ -86,6 +93,7 @@ export function CartProvider({ children }) {
         cartItems,
         isCartOpen,
         setIsCartOpen,
+        expiresAt,
         addToCart,
         removeFromCart,
         updateQuantity,
