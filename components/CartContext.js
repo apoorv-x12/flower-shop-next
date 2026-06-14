@@ -8,9 +8,9 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const CART_TTL = 1 * 24 * 60 * 60 * 1000; // 1 day in ms
+  const CART_TTL = 1 * 60 * 60 * 1000; // 1 hour in ms
 
-  // Load from localStorage on mount — ignore if older than 1 day
+  // Load from localStorage on mount — ignore if older than 1 hour
   useEffect(() => {
     const saved = localStorage.getItem("bloom-cart");
     if (saved) {
