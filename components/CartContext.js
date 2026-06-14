@@ -8,22 +8,32 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Load from localStorage on mount (optional but good practice)
-  // Demonstrating a new git commit! 🚀
+  const CART_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
+
+  // Load from localStorage on mount — ignore if older than 7 days
   useEffect(() => {
     const saved = localStorage.getItem("bloom-cart");
     if (saved) {
       try {
-        setCartItems(JSON.parse(saved));
+        const { items, savedAt } = JSON.parse(saved);
+        if (Date.now() - savedAt < CART_TTL) {
+          setCartItems(items);
+        } else {
+          localStorage.removeItem("bloom-cart"); // expired, clean up
+        }
       } catch (e) {
         console.error("Failed to parse cart");
+        localStorage.removeItem("bloom-cart");
       }
     }
   }, []);
 
-  // Save to localStorage whenever cart changes
+  // Save to localStorage with timestamp whenever cart changes
   useEffect(() => {
-    localStorage.setItem("bloom-cart", JSON.stringify(cartItems));
+    localStorage.setItem(
+      "bloom-cart",
+      JSON.stringify({ items: cartItems, savedAt: Date.now() })
+    );
   }, [cartItems]);
 
   const addToCart = (product, quantity = 1) => {
