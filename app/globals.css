@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@source "../app/**/*.{js,jsx,ts,tsx}";
+@source "../components/**/*.{js,jsx,ts,tsx}";
+@source "../data/**/*.{js,jsx,ts,tsx}";
+
 
 :root {
   --cream: #fdf8f3;
@@ -25,11 +29,11 @@
   --shadow-lg: 0 8px 40px rgba(100, 60, 40, 0.16);
 }
 
-@theme inline {
+@theme {
   --color-background: var(--cream);
   --color-foreground: var(--dark-text);
-  --font-sans: 'DM Sans', sans-serif;
-  --font-heading: 'Playfair Display', serif;
+  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
+  --font-heading: var(--font-playfair), 'Playfair Display', serif;
 }
 
 html { background: var(--cream); scroll-behavior: smooth; }

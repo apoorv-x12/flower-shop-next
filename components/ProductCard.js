@@ -117,7 +117,7 @@ function AddToCartButton({ product }) {
         cursor: "pointer", color: "var(--rose-dark)",
         transition: "all 0.2s"
       }}
-      className="hover:bg-rose hover:text-white"
+      className="hover:bg-[var(--rose)] hover:text-white hover:border-[var(--rose)]"
       title="Add to Cart"
     >
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

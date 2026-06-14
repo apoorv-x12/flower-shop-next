@@ -20,10 +20,7 @@ function FooterFlower() {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const siteBasePath =
-    process.env.NEXT_PUBLIC_BASE_PATH ||
-    process.env.NEXT_BASE_PATH ||
-    (process.env.NODE_ENV === "production" ? "/flower-shop-next" : "");
+  const siteBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <footer style={{ background: "#1e1410", color: "#d4c8c0" }}>

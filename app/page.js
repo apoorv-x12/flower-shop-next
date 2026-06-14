@@ -6,7 +6,6 @@ import Reveal from "@/components/Reveal";
 import { products } from "@/data/products";
 import TrendyProductsClient from "@/components/TrendyProductsClient";
 
-const publicBasePath = "";
 
 // ─── PRODUCT SVGs based on actual handcrafted items ──────────────────────────
 
@@ -315,10 +314,7 @@ function Stars() {
 
 export default function Home() {
   const featuredProducts = products.slice(0, 3);
-  const publicBasePath =
-    process.env.NEXT_PUBLIC_BASE_PATH ||
-    process.env.NEXT_BASE_PATH ||
-    (process.env.NODE_ENV === "production" ? "/flower-shop-next" : "");
+  const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <>
