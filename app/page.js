@@ -377,18 +377,18 @@ export default function Home() {
         {/* Hero visual: image grid + big SVG showcase */}
         <div className="container" style={{ paddingBottom: "48px", position: "relative", zIndex: 1 }}>
           <div className="hero-image-grid">
-            {/* First photo */}
+            {/* First photo — above the fold, preload */}
             <div className="group" style={{ position: "relative", borderRadius: "16px", overflow: "hidden", minHeight: "320px" }}>
               <Image
-                src={`${publicBasePath}/hero-1.png`}
-                alt="Backdrop"
+                src={`${publicBasePath}/hero-1.webp`}
+                alt=""
                 fill
+                aria-hidden
                 className="transition-transform duration-700 group-hover:scale-105"
                 style={{ objectFit: "cover", filter: "blur(24px)", transform: "scale(1.1)", opacity: 0.4 }}
-                priority
               />
               <Image
-                src={`${publicBasePath}/hero-1.png`}
+                src={`${publicBasePath}/hero-1.webp`}
                 alt="Beautiful handcrafted floral arrangement"
                 fill
                 className="transition-transform duration-700 group-hover:scale-105"
@@ -397,43 +397,45 @@ export default function Home() {
               />
             </div>
 
-            {/* Second photo */}
+            {/* Second photo — lazy load, off-screen on initial render */}
             <div className="group" style={{ position: "relative", borderRadius: "16px", overflow: "hidden", minHeight: "320px" }}>
               <Image
-                src={`${publicBasePath}/hero-2.png`}
-                alt="Backdrop"
+                src={`${publicBasePath}/hero-2.webp`}
+                alt=""
                 fill
+                aria-hidden
                 className="transition-transform duration-700 group-hover:scale-105"
                 style={{ objectFit: "cover", filter: "blur(24px)", transform: "scale(1.1)", opacity: 0.4 }}
-                priority
+                loading="lazy"
               />
               <Image
-                src={`${publicBasePath}/hero-2.png`}
+                src={`${publicBasePath}/hero-2.webp`}
                 alt="Stunning handcrafted floral design"
                 fill
                 className="transition-transform duration-700 group-hover:scale-105"
                 style={{ objectFit: "contain", zIndex: 1 }}
-                priority
+                loading="lazy"
               />
             </div>
 
-            {/* Third photo */}
+            {/* Third photo — lazy load, off-screen on initial render */}
             <div className="group" style={{ position: "relative", borderRadius: "16px", overflow: "hidden", minHeight: "320px" }}>
               <Image
-                src={`${publicBasePath}/hero-3.png`}
-                alt="Backdrop"
+                src={`${publicBasePath}/hero-3.webp`}
+                alt=""
                 fill
+                aria-hidden
                 className="transition-transform duration-700 group-hover:scale-105"
                 style={{ objectFit: "cover", filter: "blur(24px)", transform: "scale(1.1)", opacity: 0.4 }}
-                priority
+                loading="lazy"
               />
               <Image
-                src={`${publicBasePath}/hero-3.png`}
+                src={`${publicBasePath}/hero-3.webp`}
                 alt="Gorgeous floral arrangement"
                 fill
                 className="transition-transform duration-700 group-hover:scale-105"
                 style={{ objectFit: "contain", zIndex: 1 }}
-                priority
+                loading="lazy"
               />
             </div>
           </div>
