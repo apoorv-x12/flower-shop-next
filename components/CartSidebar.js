@@ -1,34 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { useCart } from "./CartContext";
 
 export default function CartSidebar() {
-  const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal, expiresAt } = useCart();
-  const [timeLeft, setTimeLeft] = useState("");
-
-  useEffect(() => {
-    if (!expiresAt || cartItems.length === 0) {
-      setTimeLeft("");
-      return;
-    }
-
-    const updateTimer = () => {
-      const diff = expiresAt - Date.now();
-      if (diff <= 0) {
-        setTimeLeft("00:00");
-      } else {
-        const mins = Math.floor((diff / 1000 / 60) % 60);
-        const secs = Math.floor((diff / 1000) % 60);
-        setTimeLeft(`${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`);
-      }
-    };
-
-    updateTimer(); // Initial update
-    const interval = setInterval(updateTimer, 1000);
-    return () => clearInterval(interval);
-  }, [expiresAt, cartItems.length]);
+  const { cartItems, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, cartTotal } = useCart();
 
   const handleCheckout = () => {
     // Format cart items for WhatsApp message
@@ -145,12 +122,6 @@ export default function CartSidebar() {
         {/* Footer (Total & Checkout) */}
         {cartItems.length > 0 && (
           <div style={{ padding: "24px", borderTop: "1px solid var(--border-light)", background: "var(--cream-2)" }}>
-            {timeLeft && (
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "12px", fontSize: "0.85rem", color: "var(--mid-text)" }}>
-                <span>Cart expires in:</span>
-                <span style={{ fontWeight: 600, color: "var(--rose)" }}>{timeLeft}</span>
-              </div>
-            )}
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px", fontSize: "1.2rem", fontWeight: 700, color: "var(--dark-text)" }}>
               <span>Total:</span>
               <span>₹{cartTotal}</span>

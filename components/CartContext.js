@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { products } from "@/data/products";
 
 const CartContext = createContext();
 
@@ -9,16 +10,24 @@ export function CartProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [expiresAt, setExpiresAt] = useState(null);
 
-  const CART_TTL = 1 * 60 * 60 * 1000; // 1 hour in ms
+  const CART_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
 
-  // Load from localStorage on mount — ignore if older than 1 hour
+  // Load from localStorage on mount — ignore if older than 7 days
   useEffect(() => {
     const saved = localStorage.getItem("bloom-cart");
     if (saved) {
       try {
         const { items, savedAt } = JSON.parse(saved);
         if (Array.isArray(items) && Date.now() - savedAt < CART_TTL) {
-          setCartItems(items);
+          // Re-validate against fresh product data so we always have the latest price
+          const freshItems = items.reduce((acc, item) => {
+            const freshProduct = products.find(p => p.id === item.product.id);
+            if (freshProduct) {
+              acc.push({ ...item, product: freshProduct });
+            }
+            return acc;
+          }, []);
+          setCartItems(freshItems);
         } else {
           localStorage.removeItem("bloom-cart"); // expired or invalid, clean up
         }
