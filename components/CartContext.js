@@ -10,16 +10,16 @@ export function CartProvider({ children }) {
 
   const CART_TTL = 1 * 24 * 60 * 60 * 1000; // 1 day in ms
 
-  // Load from localStorage on mount — ignore if older than 7 days
+  // Load from localStorage on mount — ignore if older than 1 day
   useEffect(() => {
     const saved = localStorage.getItem("bloom-cart");
     if (saved) {
       try {
         const { items, savedAt } = JSON.parse(saved);
-        if (Date.now() - savedAt < CART_TTL) {
+        if (Array.isArray(items) && Date.now() - savedAt < CART_TTL) {
           setCartItems(items);
         } else {
-          localStorage.removeItem("bloom-cart"); // expired, clean up
+          localStorage.removeItem("bloom-cart"); // expired or invalid, clean up
         }
       } catch (e) {
         console.error("Failed to parse cart");
