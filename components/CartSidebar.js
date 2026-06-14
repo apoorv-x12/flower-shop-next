@@ -20,7 +20,7 @@ export default function CartSidebar() {
     message += `%0A*Total: ₹${cartTotal}*`;
 
     // Replace with the actual WhatsApp number
-    const phoneNumber = "1234567890"; 
+    const phoneNumber = "917798316990";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     
     // Open in new tab
