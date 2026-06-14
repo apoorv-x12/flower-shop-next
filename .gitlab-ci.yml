@@ -1,0 +1,26 @@
+image: node:20.11.1
+
+pages:
+  stage: deploy
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules/
+  script:
+    - npm ci
+    # Set the base path dynamically based on the GitLab repository name for correct routing
+    - export NEXT_BASE_PATH="/${CI_PROJECT_NAME}"
+    # Build the Next.js app (outputs to 'out/' folder due to output: 'export' in next.config.mjs)
+    - npm run build
+    # GitLab Pages requires the artifacts to be in a folder called 'public'
+    # We remove any existing public folder (like the one with static assets) and replace it with 'out'
+    - rm -rf public
+    - mv out public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+    - if: $CI_COMMIT_BRANCH == "main"
