@@ -8,7 +8,7 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  const CART_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days in ms
+  const CART_TTL = 1 * 24 * 60 * 60 * 1000; // 1 day in ms
 
   // Load from localStorage on mount — ignore if older than 7 days
   useEffect(() => {
