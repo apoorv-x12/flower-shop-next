@@ -40,7 +40,7 @@ export default function Footer() {
               </div>
               <div>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "1.1rem", color: "#f0e8e0" }}>
-                  Bloom Craft
+                  Blossom Hug
                 </div>
                 <div style={{ fontSize: "0.63rem", color: "#6b5248", letterSpacing: "0.08em", textTransform: "uppercase" }}>
                   Handcrafted Flowers
@@ -117,7 +117,7 @@ export default function Footer() {
           gap: "12px", flexWrap: "wrap",
         }}>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.76rem", color: "#4a3028", margin: 0 }}>
-            &copy; {currentYear} Bloom Craft. All rights reserved.
+            &copy; {currentYear} Blossom Hug. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "16px" }}>
             {["Privacy", "Terms", "Cookies"].map((item) => (

@@ -54,7 +54,7 @@ export default function ContactPageClient() {
               </div>
               <div className="space-y-2">
                 <p className="text-sm font-semibold uppercase tracking-wide text-[#c4617e]">📧 Email</p>
-                <p className="text-gray-700">hello@bloomcraft.com</p>
+                <p className="text-gray-700">hello@blossomhug.com</p>
               </div>
               <div className="space-y-2">
                 <p className="text-sm font-semibold uppercase tracking-wide text-[#c4617e]">⏰ Hours</p>

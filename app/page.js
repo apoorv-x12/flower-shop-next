@@ -556,7 +556,7 @@ export default function Home() {
             <Reveal delay={200}>
               <span className="pill" style={{ marginBottom: "14px" }}>Our Story</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", fontWeight: 700, margin: "0 0 14px" }}>
-                About Bloom Craft
+                About Blossom Hug
               </h2>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.92rem", color: "var(--mid-text)", lineHeight: 1.75, marginBottom: "22px" }}>
                 We're passionate about creating stunning handcrafted arrangements.

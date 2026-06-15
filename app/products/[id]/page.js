@@ -15,13 +15,13 @@ export async function generateMetadata({ params }) {
 
   if (!product) {
     return {
-      title: "Product Not Found | Bloom Craft",
+      title: "Product Not Found | Blossom Hug",
       description: "The requested product could not be found.",
     };
   }
 
   return {
-    title: `${product.name} | Bloom Craft`,
+    title: `${product.name} | Blossom Hug`,
     description: product.description,
   };
 }

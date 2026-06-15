@@ -57,7 +57,7 @@ export default function PageLoader() {
           transform: "translateY(20px)",
         }}
       >
-        Bloom Craft
+        Blossom Hug
       </h1>
 
       <style jsx>{`

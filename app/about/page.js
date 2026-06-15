@@ -3,8 +3,8 @@ import { StorefrontSVG, TinyRose } from "@/components/CuteSVGs";
 import Link from "next/link";
 
 export const metadata = {
-  title: "About Us | Bloom Craft",
-  description: "Learn more about our handcrafted flowers and the story behind Bloom Craft.",
+  title: "About Us | Blossom Hug",
+  description: "Learn more about our handcrafted flowers and the story behind Blossom Hug.",
 };
 
 export default function AboutPage() {
@@ -41,7 +41,7 @@ export default function AboutPage() {
               </h2>
             </div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.92rem", color: "var(--mid-text)", lineHeight: 1.75, marginBottom: "20px" }}>
-              Welcome to <strong>Bloom Craft</strong>, where we transform simple chenille wire and pipe cleaners into timeless floral masterpieces. 
+              Welcome to <strong>Blossom Hug</strong>, where we transform simple chenille wire and pipe cleaners into timeless floral masterpieces. 
             </p>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.92rem", color: "var(--mid-text)", lineHeight: 1.75, marginBottom: "20px" }}>
               What started as a small passion project quickly bloomed into a dedicated craft studio. We believe that flowers should bring joy that lasts forever. That's why every single piece—from our delicate crimson roses to our vibrant sunflower pots—is 100% handcrafted by our artisans with meticulous attention to detail.

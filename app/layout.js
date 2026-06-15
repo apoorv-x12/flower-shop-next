@@ -21,7 +21,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Bloom Craft — Handcrafted Flower Delivery",
+  title: "Blossom Hug — Handcrafted Flower Delivery",
   description: "Handcrafted flowers and chenille arrangements for every occasion. Pan India delivery, custom orders.",
 };
 

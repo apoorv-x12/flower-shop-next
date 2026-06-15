@@ -40,7 +40,7 @@ export function StorefrontSVG({ size = 300 }) {
 
       {/* Sign */}
       <rect x="110" y="70" width="80" height="20" fill="#ffffff" rx="4" />
-      <text x="150" y="84" fontFamily="serif" fontSize="11" fontWeight="bold" fill="#b84d63" textAnchor="middle">BLOOM CRAFT</text>
+      <text x="150" y="84" fontFamily="serif" fontSize="11" fontWeight="bold" fill="#b84d63" textAnchor="middle">BLOSSOM HUG</text>
     </svg>
   );
 }

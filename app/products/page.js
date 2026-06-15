@@ -5,7 +5,7 @@ import { Swirl, Sparkle } from "@/components/CuteSVGs";
 import EnhancedSVGShowcase from "@/components/EnhancedSVGShowcase";
 
 export const metadata = {
-  title: "Our Products | Bloom Craft",
+  title: "Our Products | Blossom Hug",
   description:
     "Browse floral arrangements for gifting, celebrations, and everyday moments.",
 };

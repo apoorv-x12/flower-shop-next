@@ -67,7 +67,7 @@ export default function Header() {
             </div>
             <div style={{ lineHeight: 1.2 }}>
               <div style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700, fontSize: "clamp(1rem, 3vw, 1.3rem)", color: "var(--rose-dark)" }}>
-                Bloom Craft
+                Blossom Hug
               </div>
               <div style={{ fontSize: "clamp(0.55rem, 2vw, 0.6rem)", color: "var(--mid-text)", letterSpacing: "0.1em", textTransform: "uppercase", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   Handcrafted Flowers
